@@ -50,6 +50,41 @@ export default function Home() {
             <AuthShowcase />
           </div>
         </div>
+
+        <div className="flex gap-x-4">
+          <button
+            type="button"
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            onClick={async () => {
+              const res = await fetch("/api/crash-simple");
+              console.log(await res.json());
+            }}
+          >
+            Crash simple
+          </button>
+
+          <button
+            type="button"
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            onClick={async () => {
+              const res = await fetch("/api/crash-timeout");
+              console.log(await res.json());
+            }}
+          >
+            Crash in setTimeout
+          </button>
+
+          <button
+            type="button"
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            onClick={async () => {
+              const res = await fetch("/api/crash-promise");
+              console.log(await res.json());
+            }}
+          >
+            Crash in unawaited async
+          </button>
+        </div>
       </main>
     </>
   );
@@ -60,7 +95,7 @@ function AuthShowcase() {
 
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined }
+    { enabled: sessionData?.user !== undefined },
   );
 
   return (
