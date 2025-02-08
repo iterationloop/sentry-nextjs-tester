@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
+  console.log(_req.url);
   console.log(process.env);
 
   // throw new Error("Sentry Example API Route Error");
